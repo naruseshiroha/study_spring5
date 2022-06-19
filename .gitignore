@@ -1,5 +1,8 @@
 # vscode
 .vscode
 
+# java
+bin
+
 # maven
 target
