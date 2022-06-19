@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+    ">
+
+    <!-- 开启 autowire 注解支持 -->
+    <context:annotation-config/>
+    <context:component-scan base-package='jp.rena'/>
+
+    <!-- method3:  -->
+    <!-- 开启 AOP 注解支持 -->
+    <!-- JDK(默认 proxy-target-class='false') cglib(proxy-target-class='false') -->
+    <aop:aspectj-autoproxy proxy-target-class='true'/>
+
+    <!-- method1: Spring API 接口 -->
+    <!-- <aop:config> -->
+    <!-- 切入点:expression:表达式 -->
+    <!-- <aop:pointcut id='pointcut' expression='execution(* holo.gura8.service.UserServiceImpl.*(..))'/> -->
+    <!-- 环绕 -->
+    <!-- <aop:advisor advice-ref='log' pointcut-ref='pointcut'/>
+        <aop:advisor advice-ref='afterLog' pointcut-ref='pointcut'/> -->
+    <!-- </aop:config> -->
+
+    <!-- method2: MyPointCut -->
+    <!-- <aop:config>
+        自定义切面
+        <aop:aspect ref='myPointCut'>
+            切入点
+            <aop:pointcut id='point' expression='execution(* holo.gura8.service.UserServiceImpl.*(..))'/>
+            通知
+            <aop:before method='before' pointcut-ref='point'/>
+            <aop:after method='after' pointcut-ref='point'/>
+        </aop:aspect>
+    </aop:config> -->
+
+</beans>
