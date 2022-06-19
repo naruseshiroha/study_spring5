@@ -15,6 +15,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import jp.rena.entity.Student;
 import jp.rena.entity.User;
@@ -29,6 +30,8 @@ public class MyConfig {
     }
 
     @Bean
+    // singleton | prototype | request | session
+    @Scope("prototype")
     public User user2() {
         User user = new User();
         user.setAge(20);
