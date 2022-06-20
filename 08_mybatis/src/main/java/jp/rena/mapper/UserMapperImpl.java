@@ -2,22 +2,21 @@ package jp.rena.mapper;
 
 import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import jp.rena.entity.User;
+import lombok.Data;
 
+@Service
+@Data
 public class UserMapperImpl implements UserMapper {
 
-    private SqlSessionTemplate sqlSession;
-
-    public void setSqlSession(SqlSessionTemplate sqlSession) {
-        this.sqlSession = sqlSession;
-    }
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public List<User> listUsers() {
-        System.out.println("userMapperImpl two");
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         return userMapper.listUsers();
     }
 
